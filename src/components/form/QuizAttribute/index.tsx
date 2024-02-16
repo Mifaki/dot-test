@@ -5,6 +5,7 @@ import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import Button from "../../ui/Button";
 import { categoryOptions, difficultyOptions, typeOptions } from "../../../constant/selecOptions";
+import { getQuestion } from "../../../services/FetchQuizData";
 
 const QuizAttribute = () => {
     const Schema = z.object({
@@ -24,8 +25,19 @@ const QuizAttribute = () => {
         resolver: zodResolver(Schema),
     });
 
-    const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
+    const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
         console.log(data);
+        try {
+            const resp = await getQuestion(
+                data.numberOfQuestion,
+                data.category,
+                data.difficulty,
+                data.type
+            )
+            console.log(resp);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
