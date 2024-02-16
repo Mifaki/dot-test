@@ -17,6 +17,7 @@ export default {
         background: "#0C0A09",
         "text-primary": "#F2F2F2",
         card: "#1C1917",
+        border: "#27272A",
         accent: "#E11D48",
         "accent-dark": "#E40939",
         "accent-blue": "#1446A0",
