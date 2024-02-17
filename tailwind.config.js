@@ -21,13 +21,13 @@ export default {
         accent: "#E11D48",
         "accent-dark": "#E40939",
         "accent-blue": "#1446A0",
-        "accent-blue-dark": "#1446A0",
-        "accent-yellow": "#1446A0",
-        "accent-yellow-dark": "#1446A0",
-        "accent-turq": "#1446A0",
-        "accent-turq-dark": "#1446A0",
-        "accent-pruple": "#1446A0",
-        "accent-pruple-dark": "#1446A0"
+        "accent-blue-dark": "#113C88",
+        "accent-yellow": "#E0BF2C",
+        "accent-yellow-dark": "#D6B41F",
+        "accent-turq": "#0BAC9A",
+        "accent-turq-dark": "#0A9585",
+        "accent-purple": "#2B061E",
+        "accent-purple-dark": "#240519"
       },
       fontFamily: {
         sans: [

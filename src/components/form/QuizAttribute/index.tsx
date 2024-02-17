@@ -5,11 +5,19 @@ import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import Button from "../../ui/Button";
 import { categoryOptions, difficultyOptions, typeOptions } from "../../../constant/selecOptions";
-import { getQuestion } from "../../../services/FetchQuizData";
+import { useQuizStore } from "../../../context/useQuizStore";
+import { useNavigate } from "react-router-dom";
 
 const QuizAttribute = () => {
+    const quizStore = useQuizStore(state => state);
+    const zustandnumberOfQuestionss = useQuizStore(state => state.numberOfQuestions)
+    const zustandcategoryy = useQuizStore(state => state.category)
+    const zustanddifficultyy = useQuizStore(state => state.difficulty)
+    const zustandtypee = useQuizStore(state => state.type)
+    const navigate = useNavigate();
+
     const Schema = z.object({
-        numberOfQuestion: z.string().min(1, "Number of Question is must be greater than 0"),
+        numberOfQuestions: z.string().min(1, "Number of Question is must be greater than 0"),
         category: z.string().min(1, "Category is required"),
         difficulty: z.string().min(1, "Difficulty is required"),
         type: z.string().min(1, "Type is required"),
@@ -20,33 +28,30 @@ const QuizAttribute = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting },
+        formState: { errors },
     } = useForm<FormSchemaType>({
         resolver: zodResolver(Schema),
     });
 
+    
     const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
-        console.log(data);
-        try {
-            const resp = await getQuestion(
-                data.numberOfQuestion,
-                data.category,
-                data.difficulty,
-                data.type
-            )
-            console.log(resp);
-        } catch (err) {
-            console.error(err);
-        }
+            console.log(data);
+            quizStore.setQuizAttributes(data); 
+            navigate('/overview')
     };
+    
 
     return (
         <form
             className="space-y-4 md:space-y-6"
             onSubmit={handleSubmit(onSubmit)}
         >
+            <p>number of question: {zustandnumberOfQuestionss}</p>
+            <p>category: {zustandcategoryy}</p>
+            <p>dificuilty: {zustanddifficultyy}</p>
+            <p>type: {zustandtypee}</p>
             <Input
-                name="numberOfQuestion"
+                name="numberOfQuestions"
                 label="Number of Questions"
                 register={register}
                 errors={errors}
@@ -82,7 +87,6 @@ const QuizAttribute = () => {
                 color="Accent"
                 width="Full"
                 size="Medium"
-                disabled={isSubmitting} 
             />
         </form>
     );

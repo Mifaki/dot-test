@@ -62,7 +62,7 @@
 @layer base {
   body,
   input {
-    @apply text-text-primary;
+    @apply bg-background text-text-primary;
   }
 }
 

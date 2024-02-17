@@ -23,19 +23,14 @@ const Button = ({
         switch (color) {
             case "Accent":
                 return 'bg-accent hover:bg-accent-dark'
-
             case "Yellow":
                 return 'bg-accent-yellow hover:bg-accent-yellow-dark'
-
             case "Purple":
                 return 'bg-accent-purple hover:bg-accent-purple-dark'
-
-            case "Accent":
+            case "Turquoise":
                 return 'bg-accent-turq hover:bg-accent-turq-dark'
-
-            case "Accent":
+            case "Blue":
                 return 'bg-accent-blue hover:bg-accent-blue-dark'
-
             default:
                 return '';
         }
