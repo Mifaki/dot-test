@@ -119,18 +119,3 @@ export const difficultyOptions: SelecOptions = [
         value: "hard"
     }
 ]
-
-export const typeOptions: SelecOptions = [
-    {
-        label: "Any Type",
-        value: "any"
-    },
-    {
-        label: "Multiple Choice",
-        value: "multiple"
-    },
-    {
-        label: "True / False",
-        value: "boolean"
-    }
-]
