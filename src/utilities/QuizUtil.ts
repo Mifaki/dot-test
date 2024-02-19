@@ -19,3 +19,13 @@ export const filterAnsweredQuestions = (
 export const calculateScore = (correctAnswers: number, totalQuestions: number): number => {
   return totalQuestions !== 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
 };
+
+export const chechQuizAttempt = () => {
+  const quiz = localStorage.getItem('questions');
+
+  if(quiz !== null ) {
+    return true
+  } else  {
+    return false
+  }
+}

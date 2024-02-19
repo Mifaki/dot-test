@@ -1,13 +1,16 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Button from "../../components/ui/Button"
 import Dialog from "../../components/container/Dialog";
 import QuizAttribute from "../../components/form/QuizAttribute";
 import LoginForm from "../../components/form/LoginForm";
 import { useAuth } from "../../hooks/useAuth";
+import { chechQuizAttempt } from "../../utilities/QuizUtil";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
     const isLoggedIn = useAuth();
+    const navigate = useNavigate();
 
     const quizDialogRef = useRef<HTMLDialogElement>(null);
     const loginDialogRef = useRef<HTMLDialogElement>(null);
@@ -29,6 +32,12 @@ const Home = () => {
             ? loginDialogRef.current.close()
             : loginDialogRef.current.showModal();
     }
+
+    useEffect(() => {
+        const isQuizAttempted = chechQuizAttempt();
+
+        if (isQuizAttempted) navigate('/quiz')
+    })
 
 
     return (
