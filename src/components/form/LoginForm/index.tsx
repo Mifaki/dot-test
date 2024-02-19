@@ -3,11 +3,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../../services/UserLogin";
 
 const LoginForm = () => {
-    const navigate = useNavigate();
 
     const Schema = z.object({
         username: z.string().min(1, "Number of Question is must be greater than 0"),
@@ -28,7 +26,7 @@ const LoginForm = () => {
     const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
         try {
             await userLogin(data.username, data.password);
-            navigate('/');            
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
