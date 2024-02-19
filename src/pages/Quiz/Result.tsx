@@ -24,15 +24,6 @@ const Result = () => {
       setIncorrectAnswers(questions - correctAnswers)
       setLoading(false)
     }
-
-    if (score === null) {
-      console.log(score);
-
-      // localStorage.removeItem('totalCorrectAnswers');
-      // localStorage.removeItem('total_questions');
-      // navigate('/');
-    }
-
   }, []);
 
   const handleGoBack = () => {

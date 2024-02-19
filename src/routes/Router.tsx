@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+// Component
+import ProtectedRoute from "../components/Routes/ProtectedRoute";
 // Pages
 import Home from "../pages/Home/Home";
 import Overview from "../pages/Quiz/Overview";
@@ -12,16 +14,21 @@ const router = createBrowserRouter(
             element: <Home />
         },
         {
-            path: '/overview',
-            element: <Overview />
-        },
-        {
-            path: "/quiz",
-            element: <QuizPage />,
-        },
-        {
-            path: "/result",
-            element: <Result />,
+            element: <ProtectedRoute />,
+            children: [
+                {
+                    path: "/overview",
+                    element: <Overview />,
+                },
+                {
+                    path: "/quiz",
+                    element: <QuizPage />,
+                },
+                {
+                    path: "/result",
+                    element: <Result />,
+                },
+            ],
         },
     ]
 );

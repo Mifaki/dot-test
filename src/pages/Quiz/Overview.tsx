@@ -10,7 +10,7 @@ const Overview = () => {
     const { numberOfQuestions, category, difficulty } = quizStore;
 
     useEffect(() => {
-        if (!numberOfQuestions || !category || !difficulty) {
+        if (!numberOfQuestions || !category || !difficulty) {            
             navigate('/');
         }
     }, [numberOfQuestions, category, difficulty]);
