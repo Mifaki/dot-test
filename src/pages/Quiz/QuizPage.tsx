@@ -27,7 +27,7 @@ const QuizPage = () => {
   const fetchData = async () => {
     setLoading(true);
 
-    try {
+    try {            
       const data = await getQuestion(numberOfQuestions, category, difficulty);
 
       if (!data || data.length <= 0) {
@@ -69,18 +69,16 @@ const QuizPage = () => {
     if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
-      console.log("quiz finisded");
-      console.log(`Correct Answers: ${correctAnswers}/${totalQuestions}`);
       localStorage.removeItem('countdownTime');
       localStorage.removeItem('questions');
+      navigate('/result');
     }
   };
 
   const handleQuizCompleted = () => {
-    console.log("Quiz finished");
-    console.log(`Correct Answers: ${correctAnswers}/${totalQuestions}`);
     localStorage.removeItem('countdownTime');
     localStorage.removeItem('questions');
+    navigate('/result');
   };
 
 

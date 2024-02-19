@@ -1,4 +1,3 @@
-// quizUtils.ts
 export const shuffleOptions = (question: QuizQuestion): QuizQuestion => {
   const options = [question.correct_answer, ...question.incorrect_answers];
   const shuffledOptions = options.sort(() => Math.random() - 0.5);
@@ -15,4 +14,8 @@ export const filterAnsweredQuestions = (
   return unansweredQuestions.filter(
     (question: QuizQuestion) => !answeredQuestions.find((answered) => answered.question === question.question)
   );
+};
+
+export const calculateScore = (correctAnswers: number, totalQuestions: number): number => {
+  return totalQuestions !== 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
 };

@@ -16,6 +16,8 @@ export const getQuestion = async (
       `${import.meta.env.VITE_QUIZ_ENDPOINT}?category=${category}&amount=${amount}&difficulty=${difficulty}&type=multiple`
     );
 
+    if(response.data.results.length <= 0) return
+
     const fetchedQuestions = response.data.results;
     localStorage.setItem('questions', JSON.stringify(fetchedQuestions));
     localStorage.setItem('total_questions', JSON.stringify(fetchedQuestions.length));
