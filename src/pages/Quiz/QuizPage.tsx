@@ -27,7 +27,7 @@ const QuizPage = () => {
   const fetchData = async () => {
     setLoading(true);
 
-    try {            
+    try {
       const data = await getQuestion(numberOfQuestions, category, difficulty);
 
       if (!data || data.length <= 0) {
@@ -90,9 +90,10 @@ const QuizPage = () => {
         ) : (
           <>
             <Countdown time={20} onTimerEnd={handleQuizCompleted} />
-            <h1 className="heading-5 font-semibold mb-12">
-              {questions[currentQuestionIndex]?.question}
-            </h1>
+            <h1
+              className="heading-5 font-semibold mb-12"
+              dangerouslySetInnerHTML={{ __html: questions[currentQuestionIndex]?.question }}
+            />
             <div className="grid grid-cols-2 gap-3 w-full">
               {/* @ts-expect-error */}
               {questions[currentQuestionIndex]?.options.map((option, index) => (

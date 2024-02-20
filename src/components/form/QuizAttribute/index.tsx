@@ -64,7 +64,7 @@ const QuizAttribute = () => {
             />
 
             <Button
-                label="Finnish"
+                label="Finish"
                 type="submit"
                 color="Accent"
                 width="Full"

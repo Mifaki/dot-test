@@ -29,9 +29,8 @@ const QuizOptions = ({
         <button
             className={`${getOptionColor(color)} heading-6 font-semibold p-4 rounded-lg`}
             onClick={onClick}
-        >
-            {options}
-        </button>
+            dangerouslySetInnerHTML={{ __html: options }}
+        />
     )
 }
 
